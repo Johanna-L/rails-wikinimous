@@ -1,0 +1,19 @@
+<div class="container col-6 text-center">
+  <h1 class="p-3">Articles</h1>
+  <ul class="list-group list-group-flush">
+    <% @articles.each do |article| %>
+      <li class="list-group-item d-flex justify-content-between">
+        <div>
+          <%= link_to article.title, article_path(article) %>
+        </div>
+        <div>
+          <%= link_to 'Edit article', edit_article_path(article), class: "mr-3" %>
+          <%= link_to 'Delete', article_path(article),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <%= link_to 'Add a new article', new_article_path, class: "btn btn-primary text-decoration-none mt-5" %>
+</div>
